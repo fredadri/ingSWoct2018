@@ -5,6 +5,10 @@
  */
 package appedades;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author MUSHUG
@@ -28,81 +32,93 @@ public class fmcalcularedad extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        anonacimiento = new javax.swing.JTextField();
-        calcuedad = new javax.swing.JButton();
-        respuesta = new javax.swing.JTextField();
-        guardar = new javax.swing.JButton();
-        nuevo = new javax.swing.JButton();
+        txtfechanacimiento = new javax.swing.JTextField();
+        btncalcular = new javax.swing.JButton();
+        txtrespuesta = new javax.swing.JTextField();
+        btnnuvo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Año de Nacimiento");
 
-        anonacimiento.addActionListener(new java.awt.event.ActionListener() {
+        txtfechanacimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                anonacimientoActionPerformed(evt);
+                txtfechanacimientoActionPerformed(evt);
             }
         });
 
-        calcuedad.setText("Calculad Edad");
-        calcuedad.addActionListener(new java.awt.event.ActionListener() {
+        btncalcular.setText("Calcular Edad");
+        btncalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcuedadActionPerformed(evt);
+                btncalcularActionPerformed(evt);
             }
         });
 
-        guardar.setText("Guardar");
-
-        nuevo.setText("Nuevo");
+        btnnuvo.setText("Guardar");
+        btnnuvo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuvoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btncalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnnuvo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(calcuedad, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(anonacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(anonacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfechanacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btncalcular)
+                    .addComponent(btnnuvo))
                 .addGap(18, 18, 18)
-                .addComponent(calcuedad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nuevo)
+                .addComponent(txtrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void anonacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anonacimientoActionPerformed
+    private void txtfechanacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfechanacimientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_anonacimientoActionPerformed
+    }//GEN-LAST:event_txtfechanacimientoActionPerformed
 
-    private void calcuedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcuedadActionPerformed
+    private void btncalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncalcularActionPerformed
         // TODO add your handling code here:
+        DateTimeFormatter date=DateTimeFormatter.ofPattern("dd/mm/yyyy");
+        LocalDate fechanacimiento=LocalDate.parse(txtfechanacimiento.getText(), date);
+        LocalDate fechaactual=LocalDate.now();
         
-    }//GEN-LAST:event_calcuedadActionPerformed
+        Period periodo=Period.between(fechanacimiento, fechaactual);
+        
+        String resultado=("Tienes= "+periodo.getYears()+"Años, "+periodo.getMonths()+" Meses"+" y"+periodo.getDays()+" Dias");
+        txtrespuesta.setText(resultado);
+        
+    }//GEN-LAST:event_btncalcularActionPerformed
+
+    private void btnnuvoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuvoActionPerformed
+        // TODO add your handling code here:
+        txtfechanacimiento.setText("");
+        txtrespuesta.setText("");
+    }//GEN-LAST:event_btnnuvoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,11 +156,10 @@ public class fmcalcularedad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField anonacimiento;
-    private javax.swing.JButton calcuedad;
-    private javax.swing.JButton guardar;
+    private javax.swing.JButton btncalcular;
+    private javax.swing.JButton btnnuvo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton nuevo;
-    private javax.swing.JTextField respuesta;
+    private javax.swing.JTextField txtfechanacimiento;
+    private javax.swing.JTextField txtrespuesta;
     // End of variables declaration//GEN-END:variables
 }
